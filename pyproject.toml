@@ -10,10 +10,20 @@ readme = "README.md"
 python = "^3.10"
 poetry = "^1.8.5"
 cleo = "^2.1.0"
+scikit-build-core = "^0.10.7"
+pydantic = "^2.10.4"
+tomli = "^2.2.1"
+tomli-w = "^1.1.0"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pybind11 = "^2.13.6"
+
+[tool.poetry.plugins."poetry.application.plugin"]
+build-ext = "scikit_build_plugin.plugin:ScikitBuildPlugin"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.plugins."poetry.plugin"]
-scikit_build = "scikit_build_plugin.plugin:ScikitBuildPlugin"

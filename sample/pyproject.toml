@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "python_template"
+version = "0.1.0"
+description = "Python template project with C extensions."
+authors = ["LinHeLurking"]
+license = "MIT"
+readme = "README.md"
+include = [
+    { path = "csrcs", format = "sdist" },
+    { path = "python_template/*.so", format = "wheel" },
+    { path = "python_template/*.dll", format = "wheel" },
+    { path = "python_template/*.pyd", format = "wheel" },
+    { path = "python_template/*.pyi", format = [
+        "wheel",
+        "sdist",
+    ] },
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+pybind11 = "^2.13.5"
+
+[build-system]
+requires = ["poetry-core", "pybind11"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.scikit-build.cmake]
+source-dir = "csrcs"
+
+[tool.poetry.build]
+script = "build.py"
+generate-setup-file = false
