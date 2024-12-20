@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "scikit_build_plugin"
+version = "0.1.0"
+description = "Integration with scikit-build-core"
+authors = ["LinHeLurking"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+poetry = "^1.8.5"
+cleo = "^2.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."poetry.plugin"]
+scikit_build = "scikit_build_plugin.plugin:ScikitBuildPlugin"
